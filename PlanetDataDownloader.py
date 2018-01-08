@@ -1,15 +1,3 @@
-#-------------------------------------------------------------------------------
-# Name:        Filter Planet Data  V02 (sleep loop for activation)
-# Purpose:
-#
-# Author:      skaiser
-#
-# Created:     05.01.2018
-# Copyright:   (c) skaiser 2018
-# Licence:     <your licence>
-#-------------------------------------------------------------------------------
-# the geo json geometry object we got from geojson.io
-
 from planet import api
 import sys
 import os
@@ -22,9 +10,6 @@ ddir = str(sys.argv[1])
 sdate = str(sys.argv[2])
 edate = str(sys.argv[3])
 limit = int(sys.argv[4])
-
-##ddir = 'C:\Users\skaiser\Downloads'
-
 
 client = api.ClientV1(api_key= apikey)
 
@@ -125,15 +110,7 @@ for i in item_type:
             response = session.post(item_activation_url)
             response.status_code = response.status_code
             print response.status_code
-    ##        assets = client.get_assets(item).get()
-    ##        print('activating asset')
-    ##        activation = client.activate(assets[asset_type])
-    ##        # wait for it
         assets = client.get_assets(item).get()
         callback = api.write_to_file(directory=ddir, callback= None, overwrite= True)
         body = client.download(assets[asset_type], callback=callback)
         body.await()
-
-
-##("https://api.planet.com/data/v1/item-types/" + "{}/items/{}/assets/").format(item_type, item['id'])
-
