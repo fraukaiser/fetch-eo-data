@@ -1,4 +1,4 @@
-# planet-fetch-data
+# Earth Observation Data of Planet Labs Inc. 
 
 A simple python script to download Planet Earth Observation Data (PlanetScope and RapidEye, asset type: 'analytic') using the Planet API and some HTTP resquests.
 
